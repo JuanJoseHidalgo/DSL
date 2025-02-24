@@ -1,5 +1,14 @@
 body {background-image: url("Xeolocaliza.webp");
-        background-size: cover;
+    
+    background-color: rgba(252, 255, 255, 0.8); /* Color de fondo con transparencia */
+    background-blend-mode: lighten;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;}
-h1 {color :blue;}
+h1 {
+    color :blue;
+    text-align :center;
+    }
+h2 {
+    color :darkgreen;
+    }

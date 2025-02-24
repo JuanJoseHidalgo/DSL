@@ -54,17 +54,23 @@ fun main() {
         head {
             meta(charset = "UTF-8")
             title("WHEREIS IP?")
-            link(rel = "stylesheet", href = "c:/html/styles.css", type = "text/css")
+            link(rel = "stylesheet", href = "styles.css", type = "text/css")
         }
         body {
-            h1 { +"O enderezo da IP Pública: ${ipAddressInfo.ip}" }
-            h2 { +"Corresponde á seguinte cidade: ${ipAddressInfo.city}" }
-            h2 { +"Situada no seguinte código postal: ${ipAddressInfo.postal}" }
-            h2 { +"Que está na rexion de: ${ipAddressInfo.region}" }
-            h2  { +"Ubicada no seguinte pais: ${ipAddressInfo.country}" }
-            h2 { +"O fuso horario é: ${ipAddressInfo.timezone}" }
-            h2 { +"Corresponde á seguinte compañía telefónica: ${ipAddressInfo.org}" }
-            h2 { +"As súas coordenadas GPS son: ${ipAddressInfo.loc}" }
+            ul {
+                h1 { +"O enderezo da IP Pública: ${ipAddressInfo.ip}" }
+            }
+            hr {}
+            ul {
+                li { h2 { +"Corresponde á seguinte cidade: ${ipAddressInfo.city}" } }
+                li { h2 { +"Situada no seguinte código postal: ${ipAddressInfo.postal}" } }
+                li { h2 { +"Que está na rexion de: ${ipAddressInfo.region}" } }
+                li { h2 { +"Ubicada no seguinte pais: ${ipAddressInfo.country}" } }
+                li { h2 { +"O fuso horario é: ${ipAddressInfo.timezone}" } }
+                li { h2 { +"Corresponde á seguinte compañía telefónica: ${ipAddressInfo.org}" } }
+                li { h2 { +"As súas coordenadas GPS son: ${ipAddressInfo.loc}" } }
+            }
+            hr {}
             h1 { a(href = "https://www.google.es/maps/place/${ipAddressInfo.loc}") {+"Ver en Google Maps" }}
         }
     }
