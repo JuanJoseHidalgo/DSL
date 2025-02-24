@@ -26,6 +26,8 @@ fun main() {
     val f=File("c:/html/index.html")
     val c=File("c:/html/styles.css")
     val s=File("styles.css")
+    val ft=File("c:/html/Xeolocaliza.webp")
+    val st=File("Xeolocaliza.webp")
     val client = HttpClient.newHttpClient()
 
     if (!dir.exists()) dir.mkdirs()
@@ -77,6 +79,7 @@ fun main() {
     try {
         f.writeText(htmlContent)
         s.copyTo(c, true)
+        st.copyTo(ft, true)
     }catch (e:Exception){
         println("Erro: ${e.message}")
     }
