@@ -24,10 +24,13 @@ data class Ipaddress(
 fun main() {
     val dir=File("c:/html")
     val f=File("c:/html/index.html")
+    val c=File("c:/html/styles.css")
+    val s=File("styles.css")
     val client = HttpClient.newHttpClient()
 
     if (!dir.exists()) dir.mkdirs()
     if (f.exists()) f.delete()
+
 
     print("Introduce unha ip pública: ")
     val ip = readln().toString()
@@ -50,24 +53,24 @@ fun main() {
     val htmlContent = createHTML().html {
         head {
             meta(charset = "UTF-8")
-            title("Watching-u")
+            title("WHEREIS IP?")
+            link(rel = "stylesheet", href = "c:/html/styles.css", type = "text/css")
         }
         body {
             h1 { +"O enderezo da IP Pública: ${ipAddressInfo.ip}" }
-            h1 { +"Corresponde á seguinte cidade: ${ipAddressInfo.city}" }
-            h1 { +"Que está na rexion de: ${ipAddressInfo.region}" }
-            h1  { +"Ubicada no seguinte pais: ${ipAddressInfo.country}" }
-            h1 { +"As súas coordenadas GPS son: ${ipAddressInfo.loc}" }
-            h2 { +"Corresponde á seguinte compañía telefónica: ${ipAddressInfo.org}" }
+            h2 { +"Corresponde á seguinte cidade: ${ipAddressInfo.city}" }
             h2 { +"Situada no seguinte código postal: ${ipAddressInfo.postal}" }
-            h2 { +"Está na seguinte zona horaria: ${ipAddressInfo.timezone}" }
-            a(href = "https://www.google.es/maps/place/${ipAddressInfo.loc}") {
-                +"Ver en Google Maps"
-            }
+            h2 { +"Que está na rexion de: ${ipAddressInfo.region}" }
+            h2  { +"Ubicada no seguinte pais: ${ipAddressInfo.country}" }
+            h2 { +"O fuso horario é: ${ipAddressInfo.timezone}" }
+            h2 { +"Corresponde á seguinte compañía telefónica: ${ipAddressInfo.org}" }
+            h2 { +"As súas coordenadas GPS son: ${ipAddressInfo.loc}" }
+            h1 { a(href = "https://www.google.es/maps/place/${ipAddressInfo.loc}") {+"Ver en Google Maps" }}
         }
     }
     try {
         f.writeText(htmlContent)
+        s.copyTo(c, true)
     }catch (e:Exception){
         println("Erro: ${e.message}")
     }
